@@ -3,31 +3,23 @@ using namespace std;
 
 int main()
 {
-    int n;
-    while(scanf("%d", &n), n != 0)
+    int len;
+    while(scanf("%d", &len), len > 0)
     {
-        int vec[n], cnt =0;
-        for(int i =0; i < n; i++)
-            scanf("%d", &vec[i]);
+        int loop[len], cnt = 0;
 
-        if(vec[0] > vec[1] && vec[0] > vec[n-1])
+        for(int i = 0; i < len; i++)
+            scanf("%d", &loop[i]);
+
+        if((loop[0] > loop[len-1] && loop[0] > loop[1]) || (loop[0] < loop[len-1] && loop[0] < loop[1]))
+           cnt++;
+        if((loop[len-1] > loop[len-2] && loop[len-1] > loop[0]) || (loop[len-1] < loop[len-2] && loop[len-1] < loop[0]))
             cnt++;
-        if(vec[n-1] > vec[n-2] && vec[n-1] > vec[0])
-            cnt++;
-        if(vec[n-1] < vec[n-2] && vec[n-1] < vec[0])
-            cnt++;
-        if(vec[0] < vec[1] && vec[0] < vec[n-1])
-            cnt++;
-        if(n > 2){
-            for(int i =1; i < n; i++){
-                if(vec[i] > vec[i-1] && vec[i] > vec[i+1])
-                    cnt++;
-                if(vec[i] < vec[i-1] && vec[i] < vec[i+1])
-                    cnt++;
-            }
-        }
+
+        for(int i = 1;i < len-1; i++)
+            if((loop[i] > loop[i+1] && loop[i] > loop[i-1]) || (loop[i] < loop[i+1] && loop[i] < loop[i-1]))
+                cnt++;
 
         printf("%d\n", cnt);
     }
-    return 0;
 }
