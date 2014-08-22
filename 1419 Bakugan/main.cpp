@@ -3,45 +3,51 @@ using namespace std;
 
 int main()
 {
-    int len;
-    while(scanf("%d", &len), len > 0)
-    {
-        int mark[len], leti[len];
+    int rounds;
 
-        for(int i = 0; i < len; i++)
+    while(scanf("%d", &rounds), rounds > 0)
+    {
+        int mark[rounds+1], leti[rounds+1];
+        mark[rounds] = 0, leti[rounds] = 0;
+
+        for(int i = 0; i < rounds; i++)
             scanf("%d", &mark[i]);
-        for(int i = 0; i < len; i++)
+
+        for(int i =0; i < rounds; i++)
             scanf("%d", &leti[i]);
 
-        int cntm =0, cntl = 0, auxm, auxl,
-            cauxm =1, cauxl =1;
-        bool bonus = true;
+        int cntm =0, cntl =0, auxm, auxl,
+            cauxm = 1, cauxl = 1;
 
-        for(int i =0; i < len; i++)
+        bool bonus = true;
+        for(int i = 0; i < rounds; i++)
         {
             cntm += mark[i];
             cntl += leti[i];
             auxm = mark[i];
             auxl = leti[i];
-            if(bonus && auxm == mark[i+1])
-                cauxm++;
-            if(bonus && auxl == leti[i+1])
-                cauxl++;
-            if(bonus && auxm != mark[i+1])
-                cauxm = 1;
-            if(bonus && auxl != leti[i+1])
-                cauxl = 1;
-            if(cauxl == 3 && cauxm == 3)
-                bonus = false;
-            if(bonus && (cauxl == 3 && cauxm < 3))
+            if(bonus)
             {
-                cntl += 30;
-                bonus = false;
-            }
-            if(bonus && (cauxm == 3 && cauxl < 3))
-            {
-                cntm += 30;
-                bonus = false;
+                if(auxm == mark[i+1])
+                    cauxm++;
+                if(auxl == leti[i+1])
+                    cauxl++;
+                if(auxm != mark[i+1])
+                    cauxm = 1;
+                if(auxl != leti[i+1])
+                    cauxl = 1;
+                if(cauxm == 3 && cauxl == 3)
+                    bonus = false;
+                if(cauxm == 3 && cauxl < 3)
+                {
+                    cntm +=30;
+                    bonus = false;
+                }
+                if(cauxl == 3 && cauxm < 3)
+                {
+                    cntl += 30;
+                    bonus = false;
+                }
             }
         }
         if(cntm > cntl)
