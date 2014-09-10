@@ -27,3 +27,8 @@
 *.cbp
 *.layout
 *.depend
+
+#input and output files
+*.in
+*.out
+*.txt
