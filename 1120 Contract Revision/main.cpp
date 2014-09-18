@@ -1,3 +1,7 @@
+// CONTRACT REVISION
+// SPECIAL REMOVAL OF ZEROS IN A STRING
+// GUESS IT CAN BE APPLIERD TO ANY CHARACTER
+
 #include <iostream>
 #include <string>
 using namespace std;

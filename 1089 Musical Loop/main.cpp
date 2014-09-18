@@ -1,3 +1,7 @@
+//MUSICAL LOOP
+//CHECK FOR PEAKS (MIN AND MAX) IN A CIRCULAR ARRAY
+\
+
 #include <cstdio>
 using namespace std;
 

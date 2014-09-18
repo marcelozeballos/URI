@@ -1,3 +1,5 @@
+// GRAINS IN A CHESSBOARD
+
 #include <cstdio>
 using namespace std;
 
